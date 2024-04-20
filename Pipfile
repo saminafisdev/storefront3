@@ -19,6 +19,8 @@ redis = "*"
 celery = "*"
 flower = "*"
 model-bakery = "*"
+django-redis = "*"
+whitenoise = "*"
 
 [dev-packages]
 autopep8 = "*"

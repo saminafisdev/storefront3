@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     "django_filters",
     "rest_framework",
     "djoser",
+    "silk",
     "playground",
     "debug_toolbar",
     "store",
@@ -63,6 +64,11 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
+
+if DEBUG:
+    MIDDLEWARE += [
+        "silk.middleware.SilkyMiddleware",
+    ]
 
 INTERNAL_IPS = [
     # ...
@@ -184,11 +190,11 @@ ADMINS = [
     ("Sami", "admin@email.com"),
 ]
 
-CELERY_BROKER_URL = 'redis://localhost:6379/1'
+CELERY_BROKER_URL = "redis://localhost:6379/1"
 CELERY_BEAT_SCHEDULE = {
-  'notify_customers': {
-    'task': 'playground.tasks.notify_customers',
-    'schedule': 5,
-    'args': ['Hello world'],
-  }
+    "notify_customers": {
+        "task": "playground.tasks.notify_customers",
+        "schedule": 5,
+        "args": ["Hello world"],
+    }
 }
